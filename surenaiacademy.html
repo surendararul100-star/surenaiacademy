@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurenAI Academy - Learn AI Today, Lead Tomorrow</title>
+    <meta name="description" content="Comprehensive AI education for students and professionals. From Scratch to Machine Learning, Data Science, and more.">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("syww1hlFoAsiTqpn6");
+        })();
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-dark: #0d1b2a;
+            --primary-blue: #1e3a8a;
+            --accent-cyan: #06b6d4;
+            --accent-bright: #0ea5e9;
+            --success: #10b981;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #06b6d4 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--primary-dark);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav .logo::before {
+            content: "";
+            width: 38px;
+            height: 38px;
+            display: inline-block;
+            background: url("ai-logo.png") no-repeat center;
+            background-size: contain;
+            filter: drop-shadow(0 0 8px rgba(6,182,212,.5));
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cta-button {
+            background: var(--accent-cyan);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1e3a8a 50%, #06b6d4 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-blue);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        /* Statistics */
+        .stats {
+            background: var(--bg-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Courses Section */
+        .courses {
+            background: white;
+        }
+
+        .course-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .tier {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tier:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 16px 40px rgba(6, 182, 212, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .tier.featured {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+        }
+
+        .tier.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 1rem;
+            background: var(--accent-cyan);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tier-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-courses {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .tier-courses li {
+            padding: 0.8rem 0.6rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0.4rem;
+        }
+
+        .tier-courses li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-courses li::before {
+            content: "ℹ️";
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .tier-courses li:hover {
+            background: var(--bg-light);
+            padding-left: 1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .pricing-section {
+            background: var(--bg-light);
+        }
+
+        .pricing-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        .pricing-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            font-weight: 600;
+        }
+
+        .pricing-row {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-row:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .pricing-course {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .pricing-duration {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-duration span {
+            font-size: 0.75rem;
+            color: var(--accent-bright);
+            font-weight: bold;
+        }
+
+        .pricing-fee {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .formats {
+            background: white;
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .format-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .format-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 32px rgba(6, 182, 212, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .format-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .format-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .format-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            color: var(--text-light);
+            float: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-dark);
+        }
+
+        .modal-title {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+
+        .modal-description {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-details {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .detail-item strong {
+            color: var(--primary-dark);
+        }
+
+        .modal-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(6, 182, 212, 0.3);
+        }
+
+        .form-step {
+            display: none;
+        }
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .radio-box-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .radio-box {
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .radio-box input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-box.selected {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.05);
+            font-weight: bold;
+        }
+
+        .payment-environment {
+            background: #0f172a;
+            color: #f8fafc;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .invoice-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .invoice-row.total {
+            border-bottom: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            padding-top: 1rem;
+        }
+
+        .qr-payment-area {
+            display: none;
+            text-align: center;
+            background: #f1f5f9;
+            color: var(--text-dark);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            border: 2px dashed var(--accent-bright);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(30, 58, 138, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .cta-section {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: #0a0f18;
+            color: #cbd5e1;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .pricing-header,
+            .pricing-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SurenAI Academy</div>
+            <ul>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#formats">Formats</a></li>
+                <li><a href="#contact" class="cta-button">Enroll Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn AI Today, Lead Tomorrow</h1>
+            <p>From school students to working professionals, master AI, Machine Learning, and Data Science with expert guidance</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView()">Get Started</button>
+                <button class="btn-secondary" onclick="document.getElementById('courses').scrollIntoView()">Explore Courses</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Students Trained</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Courses Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Hands-On Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2>Courses for Every Level</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light);">Click on any course to view descriptions, pricing choices, and purchase options.</p>
+            
+            <div class="course-tiers">
+                <!-- Foundation Tier -->
+                <div class="tier">
+                    <div class="tier-name">Foundation</div>
+                    <div class="tier-description">Classes 6–8</div>
+                    <ul class="tier-courses">
+                        <li onclick="showCourseModal('Computer Basics')">Computer Basics</li>
+                        <li onclick="showCourseModal('Internet Safety')">Internet Safety</li>
+                        <li onclick="showCourseModal('Scratch Programming')">Scratch Programming</li>
+                        <li onclick="showCourseModal('AI Games & Puzzles')">AI Games & Puzzles</li>
+                        <li onclick="showCourseModal('Robotics Basics')">Robotics Basics</li>
+                        <li onclick="showCourseModal('Design with Canva')">Design with Canva</li>
+                    </ul>
+                </div>
+
+                <!-- Intermediate Tier -->
+                <div class="tier featured">
+                    <div class="tier-name">Intermediate</div>
+                    <div class="tier-description">Classes 9–12</div>
+                    <ul class="tier-courses">
+                        <li onclick="showCourseModal('Python Programming')">Python Programming</li>
+                        <li onclick="showCourseModal('AI Basics')">AI Basics</li>
+                        <li onclick="showCourseModal('Machine Learning Concepts')">Machine Learning Concepts</li>
+                        <li onclick="showCourseModal('Prompt Engineering')">Prompt Engineering</li>
+                        <li onclick="showCourseModal('ChatGPT Usage')">ChatGPT Usage</li>
+                        <li onclick="showCourseModal('Data Visualization')">Data Visualization</li>
+                        <li onclick="showCourseModal('Mini Projects')">Mini Projects</li>
+                    </ul>
+                </div>
+
+                <!-- Advanced Tier -->
+                <div class="tier">
+                    <div class="tier-name">Advanced</div>
+                    <div class="tier-description">College Students</div>
+                    <ul class="tier-courses">
+                        <li onclick="showCourseModal('Python Mastery')">Python Mastery</li>
+                        <li onclick="showCourseModal('Machine Learning')">Machine Learning</li>
+                        <li onclick="showCourseModal('Deep Learning')">Deep Learning</li>
+                        <li onclick="showCourseModal('Computer Vision')">Computer Vision</li>
+                        <li onclick="showCourseModal('NLP Projects')">NLP Projects</li>
+                        <li onclick="showCourseModal('Generative AI')">Generative AI</li>
+                        <li onclick="showCourseModal('Resume Building')">Resume Building</li>
+                    </ul>
+                </div>
+
+                <!-- Professional Tier -->
+                <div class="tier">
+                    <div class="tier-name">Professional</div>
+                    <div class="tier-description">Working Professionals</div>
+                    <ul class="tier-courses">
+                        <li onclick="showCourseModal('AI for Office Work')">AI for Office Work</li>
+                        <li onclick="showCourseModal('Excel + AI Integration')">Excel + AI Integration</li>
+                        <li onclick="showCourseModal('Power BI Analytics')">Power BI Analytics</li>
+                        <li onclick="showCourseModal('Python for Automation')">Python for Automation</li>
+                        <li onclick="showCourseModal('Data Analytics')">Data Analytics</li>
+                        <li onclick="showCourseModal('Career Advancement')">Career Advancement</li>
+                        <li onclick="showCourseModal('Interview Prep')">Interview Prep</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            
+            <div class="pricing-table">
+                <div class="pricing-header">
+                    <div>Course Program</div>
+                    <div>Duration & Availability</div>
+                    <div>Fee</div>
+                </div>
+                <div class="pricing-row">
+                    <div class="pricing-course">Kids AI (Class 6–8)</div>
+                    <div class="pricing-duration">2 months <span>Online & Offline Classroom</span></div>
+                    <div class="pricing-fee">₹2,500</div>
+                </div>
+                <div class="pricing-row">
+                    <div class="pricing-course">Python Basics</div>
+                    <div class="pricing-duration">2 months <span>Online & Offline Classroom</span></div>
+                    <div class="pricing-fee">₹3,500</div>
+                </div>
+                <div class="pricing-row">
+                    <div class="pricing-course">AI & ML</div>
+                    <div class="pricing-duration">3 months <span>Online & Offline Classroom</span></div>
+                    <div class="pricing-fee">₹6,000</div>
+                </div>
+                <div class="pricing-row">
+                    <div class="pricing-course">Data Science</div>
+                    <div class="pricing-duration">4 months <span>Online & Offline Classroom</span></div>
+                    <div class="pricing-fee">₹8,000</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: var(--text-light); font-size: 0.95rem;">
+                    💡 <strong>Early Bird Offer:</strong> First 20 students get 20% discount + free project certificate
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Formats -->
+    <section class="formats" id="formats">
+        <div class="container">
+            <h2>Multiple Learning Formats</h2>
+            
+            <div class="format-grid">
+                <div class="format-card">
+                    <div class="format-icon">🏢</div>
+                    <div class="format-title">Offline Classroom</div>
+                    <div class="format-desc">In-person classes at our specialized training center in Palacode</div>
+                </div>
+                <div class="format-card">
+                    <div class="format-icon">🖥️</div>
+                    <div class="format-title">Online Classes</div>
+                    <div class="format-desc">Learn at your own pace with live instructor support</div>
+                </div>
+                <div class="format-card">
+                    <div class="format-icon">🏫</div>
+                    <div class="format-title">Summer AI Camps</div>
+                    <div class="format-desc">Intensive 2-week programs during summer holidays</div>
+                </div>
+                <div class="format-card">
+                    <div class="format-icon">📚</div>
+                    <div class="format-title">Weekend Workshops</div>
+                    <div class="format-desc">Deep dives every Saturday and Sunday</div>
+                </div>
+                <div class="format-card">
+                    <div class="format-icon">🏢</div>
+                    <div class="format-title">Corporate Training</div>
+                    <div class="format-desc">Customized programs for office teams</div>
+                </div>
+                <div class="format-card">
+                    <div class="format-icon">🎤</div>
+                    <div class="format-title">Guest Lectures</div>
+                    <div class="format-desc">Expert talks on AI trends and careers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Start Your AI Journey?</h2>
+            <p>Join hundreds of students learning cutting-edge AI skills</p>
+            <button class="btn-primary" onclick="contactUs()">Enroll Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 style="display:flex;align-items:center;gap:10px;">
+                      <img src="ai-logo.png"
+                           alt="SurenAI Academy Logo"
+                           style="width:36px;height:36px;object-fit:contain;">
+                      <span>SurenAI Academy</span>
+                    </h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Learn AI Today, Lead Tomorrow. Comprehensive AI education for all ages and skill levels.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#formats">Learning Formats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+919600566900">+91 XXXXXXXXXX</a></li>
+                        <li><a href="mailto:surendararul100@gmail.com">info@surenaiacademy.com</a></li>
+                        <li>Palacode, Dharmapuri</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SurenAI Academy. All rights reserved. | <a href="#" style="color: var(--accent-cyan);">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Description Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCourseModal()">&times;</span>
+            <h2 class="modal-title" id="courseTitle">Course Name</h2>
+            <p class="modal-description" id="courseDescription">Course description will appear here</p>
+            <div class="modal-details" id="courseDetails">
+                <!-- Course details will be populated here -->
+            </div>
+            <button class="modal-button" onclick="openEnrollmentForm()">Purchase & Enroll Now</button>
+        </div>
+    </div>
+
+    <!-- Enrollment Form & Payment Modal -->
+    <div id="enrollmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEnrollmentForm()">&times;</span>
+            <h2 class="modal-title">Academy Checkout</h2>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Enrollment & Payment Submission successful! Check your email for purchase invoice confirmation.
+            </div>
+            <div class="error-message" id="errorMessage">
+                × Something went wrong. Please check your network connection or gateway entry.
+            </div>
+            
+            <form id="enrollmentForm" onsubmit="submitEnrollment(event)">
+                
+                <!-- STEP 1: Student Profile and Mode Selection -->
+                <div id="step1" class="form-step active">
+                    <div class="form-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address *</label>
+                        <input type="email" id="studentEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number *</label>
+                        <input type="tel" id="studentPhone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectedCourse">Selected Program</label>
+                        <input type="text" id="selectedCourse" readonly style="background-color: var(--bg-light);">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Choose Learning Format *</label>
+                        <div class="radio-box-group">
+                            <div class="radio-box selected" onclick="setMode('Online')">
+                                <input type="radio" name="learningMode" value="Online" checked>
+                                💻 Live Online Class
+                            </div>
+                            <div class="radio-box" onclick="setMode('Offline Classroom')">
+                                <input type="radio" name="learningMode" value="Offline Classroom">
+                                🏫 Classroom (Palacode Center)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentAge">Age / Class Group *</label>
+                        <input type="text" id="studentAge" placeholder="e.g., Class 9, College Student, Working Prof." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentLocation">Location / City *</label>
+                        <input type="text" id="studentLocation" required>
+                    </div>
+
+                    <button type="button" class="form-submit" onclick="goToPaymentStep()">Proceed to Payment Environment</button>
+                </div>
+
+                <!-- STEP 2: Payment Environment Dashboard -->
+                <div id="step2" class="form-step">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">Secure Payment Environment</h3>
+                    
+                    <div class="payment-environment">
+                        <div class="invoice-row">
+                            <span>Selected Course:</span>
+                            <span id="invoiceCourse">Course Name</span>
+                        </div>
+                        <div class="invoice-row">
+                            <span>Training Delivery:</span>
+                            <span id="invoiceMode">Online</span>
+                        </div>
+                        <div class="invoice-row total">
+                            <span>Total Gross Payable:</span>
+                            <span id="invoiceFee">₹0</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Payment Environment Path *</label>
+                        <div class="radio-box-group">
+                            <div class="radio-box selected" onclick="setPaymentMethod('UPI / Bank Transfer')">
+                                <input type="radio" name="paymentPath" value="UPI / Bank Transfer" checked>
+                                📱 UPI / Online Transfer
+                            </div>
+                            <div class="radio-box" onclick="setPaymentMethod('Pay Offline at Academy')">
+                                <input type="radio" name="paymentPath" value="Pay Offline at Academy">
+                                🏢 Pay Offline at Center
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="upiGatewayArea" class="qr-payment-area" style="display: block;">
+                        <p style="font-weight: 600; font-size: 0.9rem;">Scan UPI QR to complete the transaction:</p>
+                        
+                        <img src="qr.jpeg" alt="UPI QR Code" style="width: 250px; max-width: 100%; border-radius: 0.5rem; margin: 1rem auto; display: block; border: 2px solid var(--border-color);">
+                        
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">Merchant ID: <strong>surendararul100-1@okaxis</strong></p>
+                        <div class="form-group" style="text-align: left; margin-bottom: 0;">
+                            <label for="transactionId" style="font-size: 0.85rem;">Enter UPI Ref / Transaction ID *</label>
+                            <input type="text" id="transactionId" placeholder="12-digit transaction hash code">
+                        </div>
+                    </div>
+
+                    <div id="offlineGatewayArea" class="qr-payment-area">
+                        <p style="font-weight: 600; font-size: 0.9rem; color: var(--primary-blue);">Palacode Center Walk-in Payment</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Your seat reservation is generated. Please visit our academy infrastructure counter within 48 hours to complete balance settlement via Cash/Cheque.</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 1rem; margin-top: 1.5rem;">
+                        <button type="button" class="form-submit" style="background: var(--text-light);" onclick="backToDetailsStep()">Back</button>
+                        <button type="submit" class="form-submit" id="submitBtn">Complete Purchase Verification</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const courseData = {
+            'Computer Basics': { description: 'Master computer hardware foundations, file structures, and safety configurations.', fee: '₹2,500', duration: '2 months' },
+            'Internet Safety': { description: 'Understand cryptography baselines, credential asset security, and digital privacy.', fee: '₹2,500', duration: '2 months' },
+            'Scratch Programming': { description: 'Interactive visualization environment using logic loops, vectors, and modular block building architectures.', fee: '₹2,500', duration: '2 months' },
+            'AI Games & Puzzles': { description: 'Conceptual learning of system parameters through gamified heuristic engines.', fee: '₹2,500', duration: '2 months' },
+            'Robotics Basics': { description: 'Introductory design steps connecting microcontrollers and basic sensory logic setups.', fee: '₹2,500', duration: '2 months' },
+            'Design with Canva': { description: 'Master front-end styling structures, design proportions, and corporate publishing foundations.', fee: '₹2,500', duration: '2 months' },
+            'Python Programming': { description: 'Core Python syntax logic, control blocks, lists, dicts, and structural programming methods.', fee: '₹3,500', duration: '2 months' },
+            'AI Basics': { description: 'Foundations of mathematical system logic models, dataset properties, and standard AI workflows.', fee: '₹6,000', duration: '3 months' },
+            'Machine Learning Concepts': { description: 'Algorithmic focus spanning standard supervised structures and core predictive math principles.', fee: '₹6,000', duration: '3 months' },
+            'Prompt Engineering': { description: 'Context token composition methods, role paradigms, and standard prompt execution pipelines.', fee: '₹3,500', duration: '2 months' },
+            'ChatGPT Usage': { description: 'Exploiting large scale text architectures for professional documentation frameworks.', fee: '₹3,500', duration: '2 months' },
+            'Data Visualization': { description: 'Constructing analytics graphs using core visual matrices (Matplotlib, Seaborn).', fee: '₹3,500', duration: '2 months' },
+            'Mini Projects': { description: 'Practical execution linking foundational systems to build responsive script pipelines.', fee: '₹6,000', duration: '3 months' },
+            'Python Mastery': { description: 'Advanced object paradigms, memory profiling, and high performance functional patterns.', fee: '₹3,500', duration: '2 months' },
+            'Machine Learning': { description: 'Regression, clustering models, hyperparameter tuners, and standard module validation paradigms.', fee: '₹6,000', duration: '3 months' },
+            'Deep Learning': { description: 'Building neural architecture arrays, adjusting layer weights, backpropagation, and execution.', fee: '₹6,000', duration: '3 months' },
+            'Computer Vision': { description: 'Image matrices processing, convolution models, and localized detection features.', fee: '₹6,000', duration: '3 months' },
+            'NLP Projects': { description: 'Sequence models, transformers vector mapping parsing, and natural token structures.', fee: '₹6,000', duration: '3 months' },
+            'Generative AI': { description: 'Architecting fine-tuning contexts, parameter weights, and generative context strategies.', fee: '₹6,000', duration: '3 months' },
+            'Resume Building': { description: 'Portfolio architecture tips for engineering and digital developer roles.', fee: 'Included', duration: '1 month' },
+            'AI for Office Work': { description: 'Injecting productivity models to optimize administrative documentation patterns.', fee: '₹3,500', duration: '2 months' },
+            'Excel + AI Integration': { description: 'Scripting logical formulas and automating grid data workflows via model logic.', fee: '₹3,500', duration: '2 months' },
+            'Power BI Analytics': { description: 'Building semantic model visualizations, dashboards, and enterprise report structures.', fee: '₹3,500', duration: '2 months' },
+            'Python for Automation': { description: 'OS script systems, web scrapers, scheduler configurations, and standard processing scripts.', fee: '₹3,500', duration: '2 months' },
+            'Data Analytics': { description: 'SQL query architectures, cleaning procedures, and strategic metrics discovery frameworks.', fee: '₹6,000', duration: '3 months' },
+            'Career Advancement': { description: 'Industry transition techniques tailored to modern digital roles.', fee: '₹3,500', duration: '2 months' },
+            'Interview Prep': { description: 'System architectures evaluation, coding challenges preparation, and behavioral patterns.', fee: 'Included', duration: '1 month' },
+            'General Inquiry': { description: 'Consult with academy UI leads to define appropriate learning targets.', fee: 'Free Consultation', duration: 'Flexible' }
+        };
+
+        let currentSelectedMode = 'Online';
+        let currentSelectedPayment = 'UPI / Bank Transfer';
+
+        function showCourseModal(courseName) {
+            const course = courseData[courseName];
+            if (!course) return;
+
+            document.getElementById('courseTitle').textContent = courseName;
+            document.getElementById('courseDescription').textContent = course.description;
+            
+            const detailsHTML = `
+                <div class="detail-item"><strong>Tuition Fee structure:</strong> ${course.fee}</div>
+                <div class="detail-item"><strong>Program Timeline:</strong> ${course.duration}</div>
+                <div class="detail-item"><strong>Campus Environment:</strong> Available in Online & Offline Classroom formats</div>
+            `;
+            
+            document.getElementById('courseDetails').innerHTML = detailsHTML;
+            document.getElementById('courseModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCourseModal() {
+            document.getElementById('courseModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openEnrollmentForm() {
+            const courseName = document.getElementById('courseTitle').textContent;
+            closeCourseModal();
+            document.getElementById('selectedCourse').value = courseName;
+            
+            setMode('Online');
+            setPaymentMethod('UPI / Bank Transfer');
+            
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('enrollmentModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEnrollmentForm() {
+            document.getElementById('enrollmentModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function contactUs() {
+            document.getElementById('enrollmentModal').style.display = 'block';
+            document.getElementById('selectedCourse').value = 'General Inquiry';
+            setMode('Online');
+            setPaymentMethod('UPI / Bank Transfer');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setMode(modeValue) {
+            currentSelectedMode = modeValue;
+            const boxes = document.querySelectorAll('input[name="learningMode"]');
+            boxes.forEach(box => {
+                const parent = box.parentElement;
+                if(box.value === modeValue) {
+                    box.checked = true;
+                    parent.classList.add('selected');
+                } else {
+                    parent.classList.remove('selected');
+                }
+            });
+        }
+
+        function setPaymentMethod(methodValue) {
+            currentSelectedPayment = methodValue;
+            const boxes = document.querySelectorAll('input[name="paymentPath"]');
+            
+            const upiArea = document.getElementById('upiGatewayArea');
+            const offlineArea = document.getElementById('offlineGatewayArea');
+            const txInput = document.getElementById('transactionId');
+
+            boxes.forEach(box => {
+                const parent = box.parentElement;
+                if(box.value === methodValue) {
+                    box.checked = true;
+                    parent.classList.add('selected');
+                } else {
+                    parent.classList.remove('selected');
+                }
+            });
+
+            if(methodValue === 'UPI / Bank Transfer') {
+                upiArea.style.display = 'block';
+                offlineArea.style.display = 'none';
+                txInput.required = true;
+            } else {
+                upiArea.style.display = 'none';
+                offlineArea.style.display = 'block';
+                txInput.required = false;
+                txInput.value = ''; 
+            }
+        }
+
+        function goToPaymentStep() {
+            if(!document.getElementById('studentName').value || 
+               !document.getElementById('studentEmail').value || 
+               !document.getElementById('studentPhone').value || 
+               !document.getElementById('studentAge').value || 
+               !document.getElementById('studentLocation').value) {
+                alert('Please fill out all personal profile parameters correctly before checking out.');
+                return;
+            }
+
+            const currentCourse = document.getElementById('selectedCourse').value;
+            const matchData = courseData[currentCourse] || { fee: '₹0' };
+
+            document.getElementById('invoiceCourse').textContent = currentCourse;
+            document.getElementById('invoiceMode').textContent = currentSelectedMode;
+            document.getElementById('invoiceFee').textContent = matchData.fee;
+
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+
+        function backToDetailsStep() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+        }
+
+        function submitEnrollment(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.textContent = 'Verifying Transaction...';
+            submitBtn.disabled = true;
+
+            const currentCourse = document.getElementById('selectedCourse').value;
+            const matchData = courseData[currentCourse] || { fee: '₹0' };
+            const transactionRef = document.getElementById('transactionId').value || 'N/A (Offline Walk-In Reservation)';
+
+            const templateParams = {
+                to_name: document.getElementById('studentName').value,
+                student_email: document.getElementById('studentEmail').value,
+                phone: document.getElementById('studentPhone').value,
+                course: currentCourse,
+                age: document.getElementById('studentAge').value,
+                location: document.getElementById('studentLocation').value,
+                mode: currentSelectedMode,
+                payment_method: currentSelectedPayment,
+                amount: matchData.fee,
+                transaction_id: transactionRef
+            };
+
+            emailjs.send("service_3l9ukp4", "template_pj8xtcu", templateParams)
+                .then(function(response) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('errorMessage').style.display = 'none';
+                    
+                    setTimeout(() => {
+                        document.getElementById('enrollmentForm').reset();
+                        closeEnrollmentForm();
+                        submitBtn.textContent = 'Complete Purchase Verification';
+                        submitBtn.disabled = false;
+                    }, 3500);
+                }, function(error) {
+                    console.error('EmailJS Connection Failure:', error);
+                    document.getElementById('errorMessage').style.display = 'block';
+                    submitBtn.textContent = 'Complete Purchase Verification';
+                    submitBtn.disabled = false;
+                });
+        }
+
+        window.onclick = function(event) {
+            const courseModal = document.getElementById('courseModal');
+            const enrollModal = document.getElementById('enrollmentModal');
+            
+            if (event.target === courseModal) closeCourseModal();
+            if (event.target === enrollModal) closeEnrollmentForm();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
